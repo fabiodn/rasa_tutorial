@@ -1,0 +1,29 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - read_menu
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_show_menu
+
+templates:
+  utter_greet:
+  - text: "Ciao"
+  - text: "Salve"
+  - text: "Hola"
+
+  utter_goodbye:
+  - text: "Ciao"
+  - text: "A presto"
+  - text: "Arrivederci"
+  
+  utter_show_menu:
+  - text: "Pizza margherita\nPizza marinara\nPizza 4 stagioni"
+  
+
+  
+ 
