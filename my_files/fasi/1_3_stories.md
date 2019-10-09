@@ -1,4 +1,4 @@
-## Menu
+## happy path
 * greet
   - utter_greet
 * read_menu
