@@ -56,3 +56,13 @@ Finalmente possiamo avere una conversazione con pizza bot!
 ```
 rasa shell
 ```
+## 2 Facciamolo più intelligente
+Se ti sei perso qualche passaggio scarica la soluzione fino ad'ora costruita:
+```
+
+```
+### 2.1 Entities - ordiniamo una pizza
+Link alla documentazione ufficiale [entities di Rasa](https://rasa.com/docs/rasa/nlu/training-data-format/#training-data-format).  
+Aggiungiamo il nuovo intent "order_pizza" al file domain.yml
+
+

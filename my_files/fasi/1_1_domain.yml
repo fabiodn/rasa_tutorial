@@ -4,11 +4,13 @@ intents:
   - affirm
   - deny
   - read_menu
+  - order_pizza
 
 actions:
 - utter_greet
 - utter_goodbye
 - utter_show_menu
+- utter_confirm_order
 
 templates:
   utter_greet:

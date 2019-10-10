@@ -1,0 +1,10 @@
+#python
+__pycache__/
+
+#visual code
+.vscode/
+
+#models
+models/
+
+
