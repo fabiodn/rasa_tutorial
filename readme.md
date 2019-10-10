@@ -50,7 +50,7 @@ Scriviamo la nostra prima storia immaginando un dialogo semplice dove l'utente s
 Il risultato finale deve essere [simile a questo](my_files/fasi/1_3_stories.md).  
 Ora possiamo fare il train completo (nlu + core).
 ```
-rasa nlu
+rasa train
 ```
 Finalmente possiamo avere una conversazione con pizza bot!
 ```
