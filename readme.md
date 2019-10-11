@@ -59,10 +59,32 @@ rasa shell
 ## 2 Facciamolo più intelligente
 Se ti sei perso qualche passaggio scarica la soluzione fino ad'ora costruita:
 ```
-
+git clone https://github.com/fabiodn/rasa_tutorial.git
+git checkout tags/1.1 -b my_pizza_bot_1
 ```
 ### 2.1 Entities - ordiniamo una pizza
 Link alla documentazione ufficiale [entities di Rasa](https://rasa.com/docs/rasa/nlu/training-data-format/#training-data-format).  
-Aggiungiamo il nuovo intent "order_pizza" al file domain.yml
+Per approfondire l'argomento leggi [questo post](https://blog.rasa.com/rasa-nlu-in-depth-part-2-entity-recognition/) sul blog ufficiale di Rasa.
 
+Dento al file domain.yml, aggiungiamo l'utter "confirm_pizza", l'intent "order_pizza", l'entity "pizza_name" e lo slot corrispondente. 
+Uno "slot" può essere considerato come una variabile: ha un tipo (in questo caso "text") e gli verrà assegnato un valore durante la converazione, nel nostro caso il nome della pizza.
+
+Il formato dentro il file domain.yml è: 
+```
+slots:
+  <slot_name>:
+    type: text
+```
+
+Link alla documentazione ufficial sugli [slots](https://rasa.com/docs/rasa/core/slots/).
+
+Dentro il file data/nlu.md, aggiungiamo gli esempi del nuovo intent "order_pizza" mettendo l'etichetta "pizza_name" agli entities: \[entity_example\]\(entity_name\)
+```
+## intent:<intent_name>
+- Vorrei una pizza [margherita](pizza_name)
+```
+
+Dentro il file data/stories.md, aggiungiamo la nuova storia in cui ordianiamo una pizza e il bot ci conferma l'ordine.
+
+A questo punto i tre file dovrebbero essere qualcosa di simile a questo: [domain](my_files/fasi/2_1_domain.yml), [nlu](my_files/fasi/2_1_nlu.md), [stories](my_files/fasi/2_1_stories.md) .
 
