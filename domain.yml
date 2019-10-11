@@ -1,11 +1,3 @@
-%YAML 1.1
----
-actions:
-- utter_greet
-- utter_goodbye
-- action_show_menu
-- action_confirm_pizza
-
 intents:
 - greet
 - goodbye
@@ -13,14 +5,11 @@ intents:
 - deny
 - read_menu
 - order_pizza
-
 entities:
 - pizza_name
-
 slots:
   pizza_name:
     type: text
-  
 templates:
   utter_goodbye:
   - text: Ciao
@@ -30,3 +19,8 @@ templates:
   - text: Ciao
   - text: Salve
   - text: Hola
+actions:
+- utter_greet
+- utter_goodbye
+- action_show_menu
+- action_confirm_pizza

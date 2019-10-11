@@ -12,6 +12,11 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
+menu = ''
+with open('data/pizze.txt', 'r') as f:
+    menu = f.read()
+print(menu)
+
 
 class ActionShowMenu(Action):
 
@@ -22,8 +27,30 @@ class ActionShowMenu(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        with open('data/pizze.txt', 'r') as f:
-            menu = f.read()
-
         dispatcher.utter_message(menu)
         return []
+
+class ActionConfirmOrder(Action):
+
+    def name(self) -> Text:
+        return "action_confirm_pizza"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        pizza_name = tracker.get_slot('pizza_name')
+
+        if pizza_name is None:
+            dispatcher.utter_message(f'Non ho capito la tua pizza me la puoi ripetere?')
+        elif self.is_on_menu(pizza_name):
+            dispatcher.utter_message(f'L\'ordine della sua pizza {pizza_name} è stato preso in carico!')
+        else:
+            dispatcher.utter_message(f'La pizza {pizza_name} non è sul nostro menù, ci scusiamo per il disagio') 
+        return []
+    
+    def is_on_menu(self, pizza_name :str):
+        return f'{pizza_name.capitalize()}' in menu
+
+
+

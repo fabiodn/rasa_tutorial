@@ -127,6 +127,7 @@ class ActionHelloWorld(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        entity = tracker.get_slot('entity_name') #funzione per recuperare entity
         dispatcher.utter_message("Hello World!") #risposta del bot
         return []
 ```
