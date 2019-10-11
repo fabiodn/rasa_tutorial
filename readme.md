@@ -86,5 +86,53 @@ Dentro il file data/nlu.md, aggiungiamo gli esempi del nuovo intent "order_pizza
 
 Dentro il file data/stories.md, aggiungiamo la nuova storia in cui ordianiamo una pizza e il bot ci conferma l'ordine.
 
-A questo punto i tre file dovrebbero essere qualcosa di simile a questo: [domain](my_files/fasi/2_1_domain.yml), [nlu](my_files/fasi/2_1_nlu.md), [stories](my_files/fasi/2_1_stories.md) .
+A questo punto i tre file dovrebbero essere qualcosa di simile a questo: [domain](my_files/fasi/2_1_domain.yml), [nlu](my_files/fasi/2_1_nlu.md), [stories](my_files/fasi/2_1_stories.md).
+
+### 2.2 Actions - un bot non solo chiacchiere !
+Link alla documentazione ufficiale [Actions di Rasa](https://rasa.com/docs/rasa/core/actions/).
+
+Quando il nostro bot accetta un ordine dovrebbe controlla se la pizza è sul menù e in caso affermativo passare l'ordine al pizzaiolo.
+
+Per controlli e azioni Rasa mette a disposizine le Actions: classi in Python dove possiamo programmare cosa far fare al nostro bot.
+
+Pensiamo a come strutturare il menù: serve un posto unico dove scrivere le pizze, sia per mostrarle quando l'utente ci chiede di vedere il menù sia per controllare che la pizza richiesta in un ordine sia effettivamente presente sul menù stesso.  
+Per comodità scegliamo che il file già creato per la lookup table data/pizze.txt ricopra questo ruolo.   Una soluzione più avanzata potrebbe prevedere un database con pizza, ingredienti, tipo di farina ecc.
+### 2.2.1 Definiamo le action: domain.yml e stories.md
+Seguendo la convenzione dei nomi dentro rasa, nei file domain.yml e data/stories.md cambiamo i nomi da utterance a action :
+```
+utterance_confirm_pizza --> action_confirm_pizza
+uttarance_show_menu --> action_show_menu
+```
+
+Inoltre dentro domain.yml cancelliamo i templates di utterance_confirm_pizza e uttarance_show_menu, sarà dentro le action stesse che decideremo cosa far rispondere al bot.
+### 2.2.1 Actions == servizio REST
+Le action sono un servizio REST separto dal bot stesso, bisogna quindi dire al bot dove questo servizio può essere contatto.
+
+Nel file endpoints.yml "scommentiamo" le linee già pronte:
+```
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+```
+### 2.2.2 Just code it!
+Rasa si aspetta le actions definite dentro il file actions.py, dentro infatti troviamo un'action (con la sua struttura) commentata.
+
+La struttura:
+```python
+#Ogni action è una classe 
+class ActionHelloWorld(Action):  
+    def name(self) -> Text:
+        return "action_hello_world" #Il nome deve essere uguale a quello definito in domain.yml 
+#La funzione run è quella chiamata durante la conversazione
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message("Hello World!") #risposta del bot
+        return []
+```
+
+
+
+
+
 

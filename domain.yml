@@ -1,10 +1,10 @@
 %YAML 1.1
-
+---
 actions:
 - utter_greet
 - utter_goodbye
-- utter_show_menu
-- utter_confirm_pizza
+- action_show_menu
+- action_confirm_pizza
 
 intents:
 - greet
@@ -22,9 +22,6 @@ slots:
     type: text
   
 templates:
-  utter_confirm_pizza:
-  - text: L'ordine della pizza {pizza_name} è stato preso in carico
-  - text: La tua pizza {pizza_name} è in arrivo!
   utter_goodbye:
   - text: Ciao
   - text: A presto
@@ -33,5 +30,3 @@ templates:
   - text: Ciao
   - text: Salve
   - text: Hola
-  utter_show_menu:
-  - text: "Pizza margherita\nPizza marinara\nPizza 4 stagioni"
