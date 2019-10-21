@@ -1,0 +1,26 @@
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- read_menu
+- order_pizza
+entities:
+- pizza_name
+slots:
+  pizza_name:
+    type: text
+templates:
+  utter_goodbye:
+  - text: Ciao
+  - text: A presto
+  - text: Arrivederci
+  utter_greet:
+  - text: Ciao
+  - text: Salve
+  - text: Hola
+actions:
+- utter_greet
+- utter_goodbye
+- action_show_menu
+- action_confirm_pizza

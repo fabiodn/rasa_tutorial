@@ -10,9 +10,9 @@
 - arrivederci
 - arrivederci e grazie
 - a presto
-- ciao
 
 ## intent:greet
+- ciao
 - ciao
 - buongiorno
 - salve
@@ -30,10 +30,10 @@
 - Fammi una [capricciosa](pizza_name)
 - Mi fai una [diavola](pizza_name)
 - vorrei una pizza alla [salsiccia](pizza_name)
+- vorrei una [diavola](pizza_name)
 
 ## intent:read_menu
 - Vorrei leggere il menù ?
 - Che pizze avete ?
 - Che pizze fate ?
 - Che pizze hai ?
-

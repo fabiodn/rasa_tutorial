@@ -96,7 +96,7 @@ Quando il nostro bot accetta un ordine dovrebbe controlla se la pizza è sul men
 Per controlli e azioni Rasa mette a disposizine le Actions: classi in Python dove possiamo programmare cosa far fare al nostro bot.
 
 Pensiamo a come strutturare il menù: serve un posto unico dove scrivere le pizze, sia per mostrarle quando l'utente ci chiede di vedere il menù sia per controllare che la pizza richiesta in un ordine sia effettivamente presente sul menù stesso.  
-Per comodità scegliamo che il file già creato per la lookup table data/pizze.txt ricopra questo ruolo.   Una soluzione più avanzata potrebbe prevedere un database con pizza, ingredienti, tipo di farina ecc.
+__Per comodità__ scegliamo che il file già creato per la lookup table data/pizze.txt ricopra questo ruolo.   Una soluzione più avanzata potrebbe prevedere __un database__ con pizza, ingredienti, tipo di farina ecc.
 ### 2.2.1 Definiamo le action: domain.yml e stories.md
 Seguendo la convenzione dei nomi dentro rasa, nei file domain.yml e data/stories.md cambiamo i nomi da utterance a action :
 ```
@@ -131,6 +131,49 @@ class ActionHelloWorld(Action):
         dispatcher.utter_message("Hello World!") #risposta del bot
         return []
 ```
+
+L'action __action_show_menu__ deve leggere le pizze disponibili (dal file data/pizze.txt) e inoltrare le informazioni all'utente.
+
+L'action __action_confirm_pizza__ legge la pizza ordindata dall'utente dallo slot, controlla se la pizza è presente sul menù e di conseguenza comunica al cliente la presa in carico dell'ordine o meno.  
+ATTENZIONE: lo slot può essere vuoto in caso NLU non riesca a estrarre correttamente il nome della pizza.
+
+A questo punto i file modificati dovrebbero essere qualcosa di simile a questi: [domain](my_files/fasi/2_2_domain.yml), [stories](my_files/fasi/2_2_stories.md), [actions](my_files/fasi/2_2_actions.py) .
+
+Proviamo il nostro pizza bot aggiornato!  
+Come abbiamo detto le actions sono un servizio separato quindi dobbiamo lanciare actions e poi il bot.
+
+``` 
+rasa run actions
+rasa run
+```
+
+## 3 Parliamo con il mondo intero: connettore telegram !
+Link alla documentazione ufficiale Rasa [connettore telegram](https://rasa.com/docs/rasa/user-guide/connectors/telegram/).
+
+Uno dei punti di forza di Rasa è la semplicità con cui il nostro bot può comunicare attraverso più canali come telegram, google assistant, slack e [tanti altri](https://rasa.com/docs/rasa/user-guide/messaging-and-voice-channels/).
+
+Usiamo [ngrok](https://ngrok.com/download) per creare facilmente un tunnel ed avere un indirizzo su cui esporre il nostro bot.
+Per esporre il nostro bot (di default su localhost:5005):
+``` 
+ngrok http 5005
+```
+Una volta avviato ngrok ci fornisce un indirizzo __temporaneo__ di forward.
+
+
+Per creare un bot su telegram parla con BotFather, usa il comando /newbot e segui le istruzioni.
+A fine della procedura BotFather ci fornisce il token del bot appena creato.
+
+Modifichiamo il file credentials.yml aggiungendo:
+``` 
+telegram:
+  access_token: "490161424:AAGlRxinBRtKGb21_rlOEMtDFZMXBl6EC0o"
+  verify: "your_bot"
+  webhook_url: "https://your_url.com/webhooks/telegram/webhook"
+```
+Dove access_token è il token dato da BotFather, verify è il nome ufficiale del bot (non lo username con cui ti risponde) e webhook_url è quello dato da ngrok aggiungendo "/webhooks/telegram/webhook".
+
+
+
 
 
 
