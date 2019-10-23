@@ -124,7 +124,7 @@ Finalmente possiamo avere una conversazione con pizza bot!
 rasa shell
 ```
 ## 2 Rendiamolo più intelligente
-Se ti sei perso qualche passaggio scarica la soluzione fino ad'ora costruita:
+Se ti sei perso qualche passaggio scarica la soluzione finora costruita:
 ```
 git clone https://github.com/fabiodn/rasa_tutorial.git
 git checkout tags/1.1 -b my_pizza_bot_1
@@ -249,6 +249,8 @@ Dove access_token è il token dato da BotFather, verify è il nome ufficiale del
 
 Finalmente tutto il mondo può parlare con pizza bot:  
 [Clicca qui per parlare con pizzabot!](https://t.me/tutorial_pizza_bot)
+
+RIASSUNTO LINK USATI E UTILI
 
 
 
