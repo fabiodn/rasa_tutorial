@@ -18,6 +18,8 @@ INSERIRE IMG
 In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria.  
 Passo a passo vediamo quali file bisogna modificare per costruire il bot e quali funzionalità possiamo aggiungere.
 
+<img src="my_files/pizza_bot.jpg">
+
 ## 0 Set up
 ### 0.1 Install Rasa
 Suggerimento: installa tutto su un [virtual environment](https://www.anaconda.com/distribution/). 
@@ -118,7 +120,7 @@ Finalmente possiamo avere una conversazione con pizza bot!
 ```
 rasa shell
 ```
-## 2 Facciamolo più intelligente
+## 2 Rendiamolo più intelligente
 Se ti sei perso qualche passaggio scarica la soluzione fino ad'ora costruita:
 ```
 git clone https://github.com/fabiodn/rasa_tutorial.git
@@ -159,7 +161,7 @@ A questo punto i tre file dovrebbero essere qualcosa di simile a questo: [domain
 ### 2.2 Actions - un bot non solo chiacchiere !
 Link alla documentazione ufficiale [Actions di Rasa](https://rasa.com/docs/rasa/core/actions/).
 
-Quando il nostro bot accetta un ordine dovrebbe controlla se la pizza è sul menù e in caso affermativo passare l'ordine al pizzaiolo.
+Quando il nostro bot accetta un ordine dovrebbe controllare se la pizza è sul menù e in caso affermativo passare l'ordine al pizzaiolo.
 
 Per controlli e azioni Rasa mette a disposizine le Actions: classi in Python dove possiamo programmare cosa far fare al nostro bot.
 
