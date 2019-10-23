@@ -5,7 +5,8 @@ Che cos' è un __conversational__ bot ? [Link al video ufficiale di Rasa](https:
 ### Intent Entities
 Intent è qualcosa che l'utente vuole fare.
 Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
-![Alt text](my_files/intent_entities.jpg?raw=true "Intent Entities")
+![Alt text](my_files/intent_entities.jpg?raw=true "Intent Entities" | )
+<img src="my_files/intent_entities.jpg" width="100" height="100">
 ### Stories 
 Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli intent definiti.
 INSERIRE IMG
