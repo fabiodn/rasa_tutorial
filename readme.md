@@ -2,6 +2,8 @@
 [Link al tutorial ufficiale di Rasa](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/).
 ### Intro
 Che cos' è un __conversational__ bot ? [Link al video ufficiale di Rasa](https://www.youtube.com/watch?v=-F6h43DRpcU&feature=youtu.be&t=29)
+
+
 ### Intent Entities
 Intent è qualcosa che l'utente vuol fare/comunicare.  
 Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
@@ -13,12 +15,13 @@ Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli i
 
 INSERIRE IMG
 
+<img src="my_files/pizza_bot_2.jpg" align="right">
 
 ## Pizza bot
 In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria.  
+
 Passo a passo vediamo quali file bisogna modificare per costruire il bot e quali funzionalità possiamo aggiungere.
 
-<img src="my_files/pizza_bot.jpg">
 
 ## 0 Set up
 ### 0.1 Install Rasa
@@ -229,18 +232,23 @@ ngrok http 5005
 ```
 Una volta avviato ngrok ci fornisce un indirizzo __temporaneo__ di forward.
 
+<img src="my_files/ngrok_screenshot.JPG" height="350">
 
+<img src="my_files/BotFather.jpg" align="right" height="350">
 Per creare un bot su telegram parla con BotFather, usa il comando /newbot e segui le istruzioni.
 A fine della procedura BotFather ci fornisce il token del bot appena creato.
 
 Modifichiamo il file credentials.yml aggiungendo:
-``` 
+```yaml
 telegram:
   access_token: "490161424:AAGlRxinBRtKGb21_rlOEMtDFZMXBl6EC0o"
   verify: "your_bot"
   webhook_url: "https://your_url.com/webhooks/telegram/webhook"
 ```
 Dove access_token è il token dato da BotFather, verify è il nome ufficiale del bot (non lo username con cui ti risponde) e webhook_url è quello dato da ngrok aggiungendo "/webhooks/telegram/webhook".
+
+Finalmente tutto il mondo può parlare con pizza bot:  
+[Clicca qui per parlare con pizzabot!](https://t.me/tutorial_pizza_bot)
 
 
 
