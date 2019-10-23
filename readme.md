@@ -1,5 +1,17 @@
 # Tutorial RASA
 [Link al tutorial ufficiale di Rasa](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/).
+### Intro
+Che cos' è un __conversational__ bot ? [Link al video ufficiale di Rasa](https://www.youtube.com/watch?v=-F6h43DRpcU&feature=youtu.be&t=29)
+### Intent Entities
+Intent è qualcosa che l'utente vuole fare.
+Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
+![Alt text](my_files/intent_entities.jpg?raw=true "Intent Entities")
+### Stories 
+Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli intent definiti.
+INSERIRE IMG
+
+
+
 
 ## Pizza bot
 In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria.  

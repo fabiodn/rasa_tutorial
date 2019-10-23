@@ -1,20 +1,17 @@
-## Menu
+## greet
 * greet
   - utter_greet
-* read_menu
-  - action_show_menu
+
+## goodbye
 * goodbye  
   - utter_goodbye
   - action_restart
 
-## Pizza
-* greet
-  - utter_greet
-* order_pizza{"pizza_name": "margherita"}
-  - action_confirm_pizza
-  - action_restart
+## read_menu
+* read_menu
+  - action_show_menu
 
-## Only Pizza
-* order_pizza{"pizza_name": "ortolana"}
+## order_pizza
+* order_pizza{"pizza_name": "margherita"}
   - action_confirm_pizza
   - action_restart
