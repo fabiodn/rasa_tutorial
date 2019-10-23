@@ -3,15 +3,15 @@
 ### Intro
 Che cos' è un __conversational__ bot ? [Link al video ufficiale di Rasa](https://www.youtube.com/watch?v=-F6h43DRpcU&feature=youtu.be&t=29)
 ### Intent Entities
-Intent è qualcosa che l'utente vuole fare.
+Intent è qualcosa che l'utente vuol fare/comunicare.  
 Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
-![Alt text](my_files/intent_entities.jpg?raw=true "Intent Entities" | )
-<img src="my_files/intent_entities.jpg" width="100" height="100">
+
+<img src="my_files/intent_entities.jpg" width="400">
+
 ### Stories 
 Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli intent definiti.
+
 INSERIRE IMG
-
-
 
 
 ## Pizza bot
@@ -41,13 +41,48 @@ Settiamo come lingua del bot italiano modificando il [file config.yml](config.ym
 Questo file contiene la definizione degli __intent - entities__ del bot.  
 Pensiamo a quali intent-entities servono al nostro bot (slide esempio conversazione).  
 Modifichiamo il file domain.yml con i nostri intent-entities.  
-Il risultato finale deve essere [simile a questo](my_files/fasi/1_domain.yml).   
-Possiamo già parlare con il nostro bot?
+
+La sua struttura è:
+```Markdown
+intents: <!-- dichiarazione di tutti gli intent -->
+  - greet
+  - read_menu
+<!-- ... -->
+
+actions: <!-- dichiarazione di azioni del bot -->
+- utter_greet
+- utter_show_menu
+<!-- ... -->
+
+templates: <!-- frasi di risposta per ogni azione del bot -->
+  utter_greet:
+  - text: "Ciao"
+  - text: "Salve"
+<!-- ... -->
+```
+
+Il risultato finale deve essere [simile a questo](my_files/fasi/1_1_domain.yml).   
+
+__Possiamo già parlare con il nostro bot?__
 
 ### 1.2 data/nlu.dm
 Questo file contiene tutti gli esempi per il train degli entity.  
 Aggiungiamo il nuovo intent ("read_menu") ed esempi di come gli utenti possono chiedere quali pizze siano presenti nel menù.  
-Il risultato finale deve essere [simile a questo](my_files/fasi/1_2_nlu.md).  
+
+La struttura di nlu.md è:
+```markdown
+<!-- nome dell'intent come definito in domain.yml (label) -->
+## intent:affirm
+- sì <!-- esempi -->
+- certo
+
+## intent:altro_nome
+- altri esempi
+- ...
+```
+
+Il risultato finale deve essere [simile a questo](my_files/fasi/1_2_nlu.md).
+
 Partendo da questi facciamo il train del nlu.
 ```
 rasa train nlu
@@ -56,11 +91,25 @@ Il modello viene salvato, ora vediamo se il bot capisce cosa gli diciamo:
 ```
 rasa shell nlu
 ```
-Il bot capisce gli intent di cui gli abbiamo fornito gli esempi, cosa manca per una conversazione?
+__Il bot capisce gli intent di cui gli abbiamo fornito gli esempi, cosa manca per una conversazione?__
+
+
 ### 1.3 data/stories.md
-Questo file contiene le "stories" cioè i presunti flussi del discorso fra utente e bot.   
+Questo file contiene le "stories" cioè i flussi del discorso fra utente e bot.   
 Scriviamo la nostra prima storia immaginando un dialogo semplice dove l'utente saluta e chiede di poter vedere le pizze presenti nel menù, dall'altro lato il bot risponde al saluto e mostra il menù all'utente.  
+
+La struttura di stories.md è:
+```markdown
+<!-- nome della storia (non importante) -->
+## happy path 
+* greet <!-- intent dell'utente (botta) -->
+  - utter_greet <!-- action del bot (risposta) -->
+* book_plane
+  - utter_reservation_confirmed
+```
+
 Il risultato finale deve essere [simile a questo](my_files/fasi/1_3_stories.md).  
+
 Ora possiamo fare il train completo (nlu + core).
 ```
 rasa train
@@ -83,21 +132,27 @@ Dento al file domain.yml, aggiungiamo l'utter "confirm_pizza", l'intent "order_p
 Uno "slot" può essere considerato come una variabile: ha un tipo (in questo caso "text") e gli verrà assegnato un valore durante la converazione, nel nostro caso il nome della pizza.
 
 Il formato dentro il file domain.yml è: 
-```
-slots:
-  <slot_name>:
+```markdown
+slots: <!-- dichiarazione di tutti gli slot -->
+  pizza_name: <!-- nome dello slot -->
     type: text
 ```
 
 Link alla documentazione ufficial sugli [slots](https://rasa.com/docs/rasa/core/slots/).
 
 Dentro il file data/nlu.md, aggiungiamo gli esempi del nuovo intent "order_pizza" mettendo l'etichetta "pizza_name" agli entities: \[entity_example\]\(entity_name\)
-```
-## intent:<intent_name>
-- Vorrei una pizza [margherita](pizza_name)
+```markdown
+## intent:order_pizza
+- Vorrei una pizza [margherita](pizza_name) <!-- [entity_example](entity_name) -->
+- <!-- altri esempi di intent + entity -->
 ```
 
 Dentro il file data/stories.md, aggiungiamo la nuova storia in cui ordianiamo una pizza e il bot ci conferma l'ordine.
+```markdown
+## Order pizza
+* order_pizza{"pizza_name": "margherita"} <!-- intent dell'utente con slot -->
+  - utter_confirm_pizza
+```
 
 A questo punto i tre file dovrebbero essere qualcosa di simile a questo: [domain](my_files/fasi/2_1_domain.yml), [nlu](my_files/fasi/2_1_nlu.md), [stories](my_files/fasi/2_1_stories.md).
 
