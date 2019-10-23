@@ -234,7 +234,7 @@ Una volta avviato ngrok ci fornisce un indirizzo __temporaneo__ di forward.
 
 <img src="my_files/ngrok_screenshot.JPG" height="350">
 
-<img src="my_files/BotFather.jpg" align="right" height="350">
+<img src="my_files/BotFather.jpg" align="right" height="375">
 Per creare un bot su telegram parla con BotFather, usa il comando /newbot e segui le istruzioni.
 A fine della procedura BotFather ci fornisce il token del bot appena creato.
 
