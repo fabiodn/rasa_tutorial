@@ -18,7 +18,7 @@ INSERIRE IMG
 <img src="my_files/pizza_bot_2.jpg" align="right">
 
 ## Pizza bot
-In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria.  
+In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria, agevolando l'interazione utente-locale. 
 
 Passo a passo vediamo quali file bisogna modificare per costruire il bot e quali funzionalità possiamo aggiungere.
 
@@ -40,7 +40,7 @@ rasa init --no-prompt
 ```
 Rasa crea il progetto (con la struttura di default) di un bot minimale ma funzionante.
 ### 0.3 Italiano
-Settiamo come lingua del bot italiano modificando il [file config.yml](config.yml): "language: __it__"
+Impostiamo come lingua del bot italiano modificando il [file config.yml](config.yml): "language: __it__"
 ## 1 Let's start
 ### 1.1 domain.yml
 Questo file contiene la definizione degli __intent - entities__ del bot.  
@@ -96,7 +96,7 @@ Il modello viene salvato, ora vediamo se il bot capisce cosa gli diciamo:
 ```
 rasa shell nlu
 ```
-__Il bot capisce gli intent di cui gli abbiamo fornito gli esempi, cosa manca per una conversazione?__
+__Dati gli esempi forniti il bot è in grado di capire gli intent, cosa manca per una conversazione?__
 
 
 ### 1.3 data/stories.md
@@ -134,7 +134,7 @@ Link alla documentazione ufficiale [entities di Rasa](https://rasa.com/docs/rasa
 Per approfondire l'argomento leggi [questo post](https://blog.rasa.com/rasa-nlu-in-depth-part-2-entity-recognition/) sul blog ufficiale di Rasa.
 
 Dento al file domain.yml, aggiungiamo l'utter "confirm_pizza", l'intent "order_pizza", l'entity "pizza_name" e lo slot corrispondente. 
-Uno "slot" può essere considerato come una variabile: ha un tipo (in questo caso "text") e gli verrà assegnato un valore durante la converazione, nel nostro caso il nome della pizza.
+Uno "slot" può essere considerato come una variabile: ha un tipo (in questo caso "text") e gli verrà assegnato un valore durante la conversazione, nel nostro caso il nome della pizza.
 
 Il formato dentro il file domain.yml è: 
 ```markdown
@@ -143,7 +143,7 @@ slots: <!-- dichiarazione di tutti gli slot -->
     type: text
 ```
 
-Link alla documentazione ufficial sugli [slots](https://rasa.com/docs/rasa/core/slots/).
+Link alla documentazione ufficiale sugli [slots](https://rasa.com/docs/rasa/core/slots/).
 
 Dentro il file data/nlu.md, aggiungiamo gli esempi del nuovo intent "order_pizza" mettendo l'etichetta "pizza_name" agli entities: \[entity_example\]\(entity_name\)
 ```markdown
@@ -152,7 +152,7 @@ Dentro il file data/nlu.md, aggiungiamo gli esempi del nuovo intent "order_pizza
 - <!-- altri esempi di intent + entity -->
 ```
 
-Dentro il file data/stories.md, aggiungiamo la nuova storia in cui ordianiamo una pizza e il bot ci conferma l'ordine.
+Dentro il file data/stories.md, aggiungiamo la nuova storia in cui ordiniamo una pizza e il bot ci conferma l'ordine.
 ```markdown
 ## Order pizza
 * order_pizza{"pizza_name": "margherita"} <!-- intent dell'utente con slot -->
@@ -166,7 +166,7 @@ Link alla documentazione ufficiale [Actions di Rasa](https://rasa.com/docs/rasa/
 
 Quando il nostro bot accetta un ordine dovrebbe controllare se la pizza è sul menù e in caso affermativo passare l'ordine al pizzaiolo.
 
-Per controlli e azioni Rasa mette a disposizine le Actions: classi in Python dove possiamo programmare cosa far fare al nostro bot.
+Per controlli e azioni Rasa mette a disposizione le Actions: classi in Python dove possiamo programmare cosa far fare al nostro bot.
 
 Pensiamo a come strutturare il menù: serve un posto unico dove scrivere le pizze, sia per mostrarle quando l'utente ci chiede di vedere il menù sia per controllare che la pizza richiesta in un ordine sia effettivamente presente sul menù stesso.  
 __Per comodità__ scegliamo che il file già creato per la lookup table data/pizze.txt ricopra questo ruolo.   Una soluzione più avanzata potrebbe prevedere __un database__ con pizza, ingredienti, tipo di farina ecc.
@@ -179,7 +179,8 @@ uttarance_show_menu --> action_show_menu
 
 Inoltre dentro domain.yml cancelliamo i templates di utterance_confirm_pizza e uttarance_show_menu, sarà dentro le action stesse che decideremo cosa far rispondere al bot.
 ### 2.2.1 Actions == servizio REST
-Le action sono un servizio REST separto dal bot stesso, bisogna quindi dire al bot dove questo servizio può essere contatto.
+Le actions sono un servizio REST separato dal bot.  
+Impostiamo il bot in modo che sappia su quale indirizzo contattare il servizio actions.
 
 Nel file endpoints.yml "scommentiamo" le linee già pronte:
 ```
@@ -207,7 +208,7 @@ class ActionHelloWorld(Action):
 
 L'action __action_show_menu__ deve leggere le pizze disponibili (dal file data/pizze.txt) e inoltrare le informazioni all'utente.
 
-L'action __action_confirm_pizza__ legge la pizza ordindata dall'utente dallo slot, controlla se la pizza è presente sul menù e di conseguenza comunica al cliente la presa in carico dell'ordine o meno.  
+L'action __action_confirm_pizza__ legge la pizza ordinata dall'utente dallo slot, controlla se la pizza è presente sul menù e di conseguenza comunica al cliente la presa in carico dell'ordine o meno.  
 ATTENZIONE: lo slot può essere vuoto in caso NLU non riesca a estrarre correttamente il nome della pizza.
 
 A questo punto i file modificati dovrebbero essere qualcosa di simile a questi: [domain](my_files/fasi/2_2_domain.yml), [stories](my_files/fasi/2_2_stories.md), [actions](my_files/fasi/2_2_actions.py) .
