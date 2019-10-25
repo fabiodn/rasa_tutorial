@@ -10,14 +10,14 @@ Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
 
 <img src="my_files/intent_entities.jpg" width="400">
 
-### Stories 
+### Stories
 Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli intent definiti.
 
 INSERIRE IMG
 
 <img src="my_files/pizza_bot_2.jpg" align="right">
 
-## Pizza bot
+## Pizza bot 🍕
 In questo tutorial costruiamo un bot che ci aiuti nella nostra pizzeria immaginaria, agevolando l'interazione utente-locale. 
 
 Passo a passo vediamo quali file bisogna modificare per costruire il bot e quali funzionalità possiamo aggiungere.
@@ -39,9 +39,9 @@ Creiamo un dummy bot per iniziare.
 rasa init --no-prompt
 ```
 Rasa crea il progetto (con la struttura di default) di un bot minimale ma funzionante.
-### 0.3 Italiano
+### 0.3 Italiano 
 Impostiamo come lingua del bot italiano modificando il [file config.yml](config.yml): "language: __it__"
-## 1 Let's start
+## 1 Let's start 🛠
 ### 1.1 domain.yml
 Questo file contiene la definizione degli __intent - entities__ del bot.  
 Pensiamo a quali intent-entities servono al nostro bot (slide esempio conversazione).  
@@ -123,7 +123,7 @@ Finalmente possiamo avere una conversazione con pizza bot!
 ```
 rasa shell
 ```
-## 2 Rendiamolo più intelligente
+## 2 Rendiamolo più intelligente 🧙‍
 Se ti sei perso qualche passaggio scarica la soluzione finora costruita:
 ```
 git clone https://github.com/fabiodn/rasa_tutorial.git
@@ -221,7 +221,7 @@ rasa run actions
 rasa run
 ```
 
-## 3 Parliamo con il mondo intero: connettore telegram !
+## 3 Parliamo con il mondo intero: connettore telegram ! 🌍
 Link alla documentazione ufficiale Rasa [connettore telegram](https://rasa.com/docs/rasa/user-guide/connectors/telegram/).
 
 Uno dei punti di forza di Rasa è la semplicità con cui il nostro bot può comunicare attraverso più canali come telegram, google assistant, slack e [tanti altri](https://rasa.com/docs/rasa/user-guide/messaging-and-voice-channels/).
