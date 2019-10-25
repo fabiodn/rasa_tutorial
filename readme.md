@@ -41,7 +41,7 @@ rasa init --no-prompt
 Rasa crea il progetto (con la struttura di default) di un bot minimale ma funzionante.
 ### 0.3 Italiano 
 Impostiamo come lingua del bot italiano modificando il [file config.yml](config.yml): "language: __it__"
-## 1 Let's start 🛠
+## 1 Let's start 🛫
 ### 1.1 domain.yml
 Questo file contiene la definizione degli __intent - entities__ del bot.  
 Pensiamo a quali intent-entities servono al nostro bot (slide esempio conversazione).  
