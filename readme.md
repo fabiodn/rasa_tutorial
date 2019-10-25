@@ -251,7 +251,27 @@ Dove access_token è il token dato da BotFather, verify è il nome ufficiale del
 Finalmente tutto il mondo può parlare con pizza bot:  
 [Clicca qui per parlare con pizzabot!](https://t.me/tutorial_pizza_bot)
 
-RIASSUNTO LINK USATI E UTILI
+## LINK UTILI
+### Principali
+- [Documentazione RASA](https://rasa.com/docs/)
+- [Blog RASA](https://blog.rasa.com/)
+- [Forum RASA](https://forum.rasa.com/)
+- [Canale youtube RASA](https://www.youtube.com/channel/UCJ0V6493mLvqdiVwOKWBODQ)
+### Temi trattatati nel tutorial
+- [Domain](https://rasa.com/docs/rasa/core/domains/)
+- [Formato Intent Entities](https://rasa.com/docs/rasa/nlu/training-data-format/)
+- [Stories](https://rasa.com/docs/rasa/core/stories/)
+- [Actions](https://rasa.com/docs/rasa/core/actions/)
+- [Slot](https://rasa.com/docs/rasa/core/slots/)
+- [Connettore Telegram](https://rasa.com/docs/rasa/user-guide/connectors/telegram/)
+### Approfondimenti
+- [Altri connettori](https://rasa.com/docs/rasa/user-guide/messaging-and-voice-channels/))
+- [Pipeline](https://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)
+- [Entity Extraction](https://rasa.com/docs/rasa/nlu/entity-extraction/)
+- [Google Assistant + RASA](https://blog.rasa.com/going-beyond-hey-google-building-a-rasa-powered-google-assistant/)
+- [Knowledge base](https://blog.rasa.com/integrating-rasa-with-knowledge-bases/)
+
+
 
 
 
