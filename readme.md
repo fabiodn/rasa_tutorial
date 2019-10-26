@@ -13,7 +13,7 @@ Entity è un termine o un oggetto che è rilevante/necessario per l'intent.
 ### Stories
 Una Story(Dialog) è un flusso di conversazione che definisce le risposte agli intent definiti.
 
-INSERIRE IMG
+<img src="my_files/stories_gif_new3.gif" height="350">
 
 <img src="my_files/pizza_bot_2.jpg" align="right">
 
