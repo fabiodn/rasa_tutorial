@@ -251,8 +251,15 @@ telegram:
 ```
 Dove access_token è il token dato da BotFather, verify è il nome ufficiale del bot (non lo username con cui ti risponde) e webhook_url è quello dato da ngrok aggiungendo "/webhooks/telegram/webhook".
 
+
+### Risultato finale
 Finalmente tutto il mondo può parlare con pizza bot:  
 [Clicca qui per parlare con pizzabot!](https://t.me/tutorial_pizza_bot)
+
+Ecco uno screenshot di una conversazione reale con pizza bot (presentata al linux day):  
+<img src="my_files\screen_shot_result.jpg" height="350">
+
+
 
 ## LINK UTILI
 ### Principali
