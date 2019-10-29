@@ -1,4 +1,7 @@
 # Tutorial RASA
+Disclaimer: __this is not an official tutorial by RASA.__   
+I did this tutorial to help the italian comunity to get started with RASA.
+
 [Link al tutorial ufficiale di Rasa](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/).
 ### Intro
 Che cos' è un __conversational__ bot ? [Link al video ufficiale di Rasa](https://www.youtube.com/watch?v=-F6h43DRpcU&feature=youtu.be&t=29)
