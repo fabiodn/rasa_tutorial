@@ -2,12 +2,8 @@ FROM rasa/rasa:1.10.0-full
 
 ENV BOT_ENV=production
 
-# Create app directory
-WORKDIR /app
-
 # Install app dependencies
-COPY requirements.txt ./
-
+#COPY requirements.txt ./
 #RUN pip install --upgrade pip
 #RUN pip install -r requirements.txt --no-cache-dir
 
