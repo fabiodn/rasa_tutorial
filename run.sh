@@ -1,3 +1,3 @@
 #!/bin/sh
 rasa run actions & 
-rasa run --v
+rasa run --v -p 5555
